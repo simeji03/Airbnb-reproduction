@@ -22,7 +22,7 @@
   </head>
   <body>
     <header>
-      <nav class="navbar fixed-top navbar-expand-xl">
+      <nav class="navbar fixed-top navbar-expand-xl container-fluid">
         <a class="navbar-brand" href="#"><i class="fab fa-airbnb"></i></a>
         <button
           class="navbar-toggler"
@@ -63,7 +63,7 @@
     <main>
       <div class="top-img"></div>
 
-      <div class="top-form">
+      <div class="top-form container-lg">
         <h1>Airbnbホストになって、暮らしをレベルアップ</h1>
         <form>
           <p>宿泊施設の内容を記入</p>
@@ -75,12 +75,12 @@
                 placeholder="ロケーション"
               />
             </div>
-            <div class="col-xl-6 mb-4">
+            <div class="col-md-6 mb-md-4 mb-2">
               <select class="form-control">
                 <option class="form-option">まるまる貸切</option>
               </select>
             </div>
-            <div class="col-xl-6">
+            <div class="col-md-6 mb-4">
               <select class="form-control">
                 <option>ゲスト4人</option>
               </select>
@@ -137,8 +137,8 @@
       </section>
 
       <section class="review-comment container-lg">
-        <div class="row justify-content-between">
-          <div class="review-text left col-xl-6">
+        <div class="comment-left row justify-content-between">
+          <div class="review-text left col-md-6">
             <i class="fas fa-quote-left"></i>
             <p class="lg-text">
               「ホスト保証」があったからAirbnb参加を決めたといっても過言でないほどで、被害やトラブルがあったときに頼れるサポートがあるのは本当にありがたいですね。
@@ -148,7 +148,7 @@
             </p>
             <button class="btn btn-outline-dark">ホスト実践例をチェック</button>
           </div>
-          <div class="review-img col-xl-6">
+          <div class="review-img col-md-6">
             <img src="img/cm01.jpg" />
           </div>
         </div>
@@ -219,15 +219,15 @@
 
       <section class="review-comment container-lg">
         <div class="two-columns row justify-content-between align-items-center">
-          <div class="review-img col-xl-6">
+          <div class="review-img col-md-6">
             <img src="img/cm02.jpg" />
           </div>
-          <div class="review-text right col-xl-6">
+          <div class="review-text right col-md-6">
             <i class="fas fa-quote-left"></i>
             <p class="lg-text">
               ホスト収入でキッチンリフォーム。お家をいろいろアップグレードしました。
             </p>
-            <p class="small-text">
+            <p class="light-text">
               Tessaさんはロンドン在住。ホストになって世界が（懐も）広がりました
             </p>
             <button class="btn btn-outline-dark">ホスト実践例をチェック</button>
@@ -238,21 +238,21 @@
       <div class="data container-lg">
         <h2>夢を共有する仲間が世界中に</h2>
         <div class="three-columns row">
-          <div class="three-column-item col-xl-4">
+          <div class="three-column-item col-md-4">
             <p class="xl-text">290万</p>
-            <p>
+            <p class="small-text">
               Airbnbのホスト
             </p>
           </div>
-          <div class="three-column-item col-xl-4">
+          <div class="three-column-item col-md-4">
             <p class="xl-text">80万</p>
-            <p>
+            <p class="small-text">
               Airbnbにおける毎晩の平均宿泊数
             </p>
           </div>
-          <div class="three-column-item col-xl-4">
+          <div class="three-column-item col-md-4">
             <p class="xl-text">14,000</p>
-            <p>
+            <p class="small-text">
               月あたりの新規登録ホスト数
             </p>
           </div>
@@ -312,7 +312,7 @@
       <div class="details container-lg">
         <h3>ホスティングの詳細はこちら</h3>
         <div class="three-columns row">
-          <div class="three-column-item col-xl-4">
+          <div class="three-column-item col-md-4">
             <div class="card">
               <img src="img/hs01.jpg" class="card-img-top" />
               <div class="card-body">
@@ -323,7 +323,7 @@
               <a href="#" class="card-link"></a>
             </div>
           </div>
-          <div class="three-column-item col-xl-4">
+          <div class="three-column-item col-md-4">
             <div class="card">
               <img src="img/hs02.jpg" class="card-img-top" />
               <div class="card-body">
@@ -334,7 +334,7 @@
               <a href="#" class="card-link"></a>
             </div>
           </div>
-          <div class="three-column-item col-xl-4">
+          <div class="three-column-item col-md-4">
             <div class="card">
               <img src="img/hs03.jpg" class="card-img-top" />
               <div class="card-body">
@@ -349,7 +349,7 @@
       </div>
 
       <div class="closing container-lg mw1280">
-        <div class="closing-box">
+        <div class="closing-box container-lg">
           <p class="xxl-text">収入を増やしたい？</p>
           <button class="btn btn-light">リスティングを作成</button>
         </div>
@@ -357,7 +357,7 @@
     </main>
 
     <footer>
-      <section class="footer-menu container-lg mw1280">
+      <section class="footer-menu container-fluid mw1280">
         <div class="four-columns row">
           <div class="four-column-item footer-menus col-xl-3">
             <h5>企業情報</h5>
@@ -409,7 +409,7 @@
           <div class="footer-left col-xl-8">
             <small>
               <a href="#">
-                Airbnb Global Services Limited<br />
+                <span class="br">Airbnb Global Services Limited</span>
                 観光庁長官(01)第S0001号(2018年6月15日-2023年6月14日)
               </a>
             </small>

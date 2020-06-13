@@ -2,6 +2,19 @@ $base-color: #484848;
 $active-color: #008489;
 $link-color: #006c70;
 
+$breakpoints: (
+  "sm": "screen and (max-width: 575px)",
+  "md": "screen and (max-width: 767px)",
+  "lg": "screen and (max-width: 991px)",
+  "xl": "screen and (max-width: 1199px)",
+) !default;
+
+@mixin mq($breakpoint: md) {
+  @media #{map-get($breakpoints, $breakpoint)} {
+    @content;
+  }
+}
+
 // setting.scss
 * {
   box-sizing: border-box;
@@ -38,6 +51,9 @@ a {
 h1 {
   color: #333333;
   font-weight: 800;
+  @include mq(md) {
+    font-size: 2.125rem;
+  }
 }
 
 h2 {
@@ -47,6 +63,13 @@ h2 {
   font-weight: 900;
   margin-bottom: 60px;
   text-align: center;
+  @include mq(xl) {
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+  }
+  @include mq(md) {
+    text-align-last: left;
+  }
   &:before {
     position: absolute;
     top: -1.25rem;
@@ -56,6 +79,10 @@ h2 {
     content: "";
     height: 2px;
     width: 65px;
+    @include mq(md) {
+      left: 0;
+      transform: none;
+    }
   }
 }
 
@@ -75,20 +102,42 @@ h5 {
 
 .container-lg {
   margin-bottom: 160px;
+  @include mq(xl) {
+    margin-bottom: 130px;
+    max-width: 680px;
+  }
+  @include mq(md) {
+    margin-bottom: 80px;
+  }
 }
 
 .mw1280 {
   max-width: 1280px;
 }
 
+.small-text {
+  @include mq(xl) {
+    font-size: 0.875rem;
+    line-height: 1.125rem;
+  }
+}
+
 .lg-text {
   font-size: 2rem;
   line-height: 1.25;
+  @include mq(xl) {
+    font-size: 1.125rem;
+    line-height: 1.625rem;
+  }
 }
 
 .xl-text {
   font-size: 3.75rem;
   line-height: 4rem;
+  @include mq(xl) {
+    font-size: 2.5rem;
+    line-height: 2.5rem;
+  }
 }
 
 .xxl-text {
@@ -96,6 +145,10 @@ h5 {
   font-size: 3.75rem;
   font-weight: 700;
   line-height: 4rem;
+  @include mq(xl) {
+    font-size: 2.5rem;
+    line-height: 2.5rem;
+  }
 }
 
 .light-text {
@@ -109,8 +162,16 @@ h5 {
 }
 
 .two-column-item {
+  &:not(:last-of-type) {
+    @include mq(xl) {
+      margin-bottom: 40px;
+    }
+  }
   &:first-child {
     padding-right: 60px;
+    @include mq(xl) {
+      padding-right: 0;
+    }
   }
   .fa-check {
     color: $active-color;
@@ -119,11 +180,23 @@ h5 {
   }
 }
 
+.three-column-item {
+  &:not(:last-of-type) {
+    @include mq(xl) {
+      margin-bottom: 40px;
+    }
+  }
+}
+
 // header
 .navbar {
   height: 80px;
   background-color: #fff;
   box-shadow: 0 1px #dddddd;
+  @include mq(xl) {
+    background-color: transparent;
+    box-shadow: none;
+  }
   .navbar-brand {
     display: flex;
     align-items: center;
@@ -131,9 +204,21 @@ h5 {
     .fab {
       font-size: 2.125rem;
       color: #006c70;
+      @include mq(xl) {
+        color: #ffffff;
+      }
+    }
+  }
+  .navbar-toggler {
+    @include mq(xl) {
+      // color: #ffffff;
     }
   }
   .navbar-collapse {
+    background-color: #fff;
+    @include mq(xl) {
+      padding: 50px;
+    }
     .navbar-nav {
       .nav-item {
         margin-right: 20px;
@@ -173,6 +258,14 @@ h5 {
   background-image: url(../img/top-img.jpg);
   background-size: cover;
   margin-bottom: 60px;
+  @include mq(xl) {
+    height: 310px;
+    margin-bottom: -140px;
+  }
+  @include mq(md) {
+    height: 240px;
+    margin-bottom: -130px;
+  }
 }
 
 // top-form
@@ -184,6 +277,30 @@ h5 {
   border-radius: 0.3rem;
   padding: 30px;
   width: 460px;
+  @include mq(xl) {
+    position: static;
+    background-color: transparent;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+  h1 {
+    @include mq(xl) {
+      color: #ffffff;
+      max-width: 800px;
+      margin: 0 auto 40px;
+    }
+  }
+  form {
+    max-width: 700px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  p {
+    font-weight: 600;
+    @include mq(md) {
+      font-size: 1.125rem;
+    }
+  }
   input[type="text"] {
     padding: 22px 10px;
   }
@@ -203,17 +320,40 @@ h5 {
 }
 
 // review-comment
+.review-comment {
+  .comment-left {
+    @include mq(md) {
+      flex-direction: column-reverse;
+    }
+  }
+}
+
 .review-text {
   &.right {
     padding-left: 60px;
+    @include mq(xl) {
+      padding-left: 30px;
+    }
   }
   &.left {
     padding-right: 60px;
+    @include mq(xl) {
+      padding-right: 30px;
+    }
   }
   .fas {
     color: #fdb32b;
     font-size: 2.5rem;
     font-weight: 700;
+    @include mq(xl) {
+      font-size: 1.3rem;
+    }
+  }
+  .light-text {
+    @include mq(xl) {
+      font-size: 0.875rem;
+      line-height: 1.125rem;
+    }
   }
   .btn {
     border: 2px solid;
@@ -229,6 +369,11 @@ h5 {
   img {
     margin-top: 100px;
     width: 100%;
+    @include mq(md) {
+      margin-top: 60px;
+      height: 670px;
+      object-fit: cover;
+    }
   }
 }
 
@@ -236,6 +381,9 @@ h5 {
 .data {
   p {
     text-align: center;
+    @include mq(md) {
+      text-align-last: left;
+    }
   }
 }
 
@@ -243,6 +391,11 @@ h5 {
 .questions {
   .two-column-item {
     padding-right: 0;
+    &:first-of-type {
+      @include mq(xl) {
+        margin-bottom: -15px;
+      }
+    }
     ul li {
       display: block;
       border-bottom: 1px solid #ebebeb;
@@ -263,17 +416,42 @@ h5 {
 .card {
   position: relative;
   border: none;
-  img {
+  width: 105%;
+  @include mq(xl) {
+    border: 1px solid #dddddd;
+    box-shadow: 0px 1px 2px #dddddd;
+  }
+  @include mq(md) {
+    // display: flex;
+    flex-direction: row;
+  }
+  .card-img-top {
     height: 170px;
     object-fit: cover;
+    @include mq(xl) {
+      height: 105px;
+    }
+    @include mq(md) {
+      flex: 1;
+    }
   }
   .card-body {
     padding-left: 0;
+    @include mq(xl) {
+      padding: 10px 15px;
+    }
+    @include mq(md) {
+      flex: 2;
+    }
     .card-title {
       font-size: 1rem;
       font-weight: 800;
       line-height: 1.25rem;
       margin: 0 0 5px;
+      @include mq(xl) {
+        font-size: 0.875rem;
+        line-height: 1.125rem;
+      }
     }
     .card-text,
     a {
@@ -281,8 +459,16 @@ h5 {
       line-height: 1.375rem;
       margin: 0;
     }
+    .card-text {
+      @include mq(xl) {
+        line-height: 1;
+      }
+    }
     a {
       text-decoration: none;
+      @include mq(xl) {
+        display: none;
+      }
     }
   }
   .card-link {
@@ -297,19 +483,23 @@ h5 {
 
 // closing
 .closing {
-  display: flex;
-  align-items: center;
+  // display: flex;
+  // align-items: center;
   width: 100%;
   height: 440px;
   background-image: url(../img/closing-img.jpg);
   background-size: cover;
   margin-bottom: 65px;
   .closing-box {
-    padding-left: 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 80%;
     .xxl-text {
       margin-bottom: 40px;
     }
     .btn {
+      align-self: start;
       padding: 10px 20px;
     }
   }
@@ -318,19 +508,51 @@ h5 {
 // footer
 footer {
   background-color: #f7f7f7;
+  border-top: 1px solid #dddddd;
   padding: 0 80px;
+  @include mq(xl) {
+    padding: 0 30px;
+  }
   .footer-menu {
     margin-bottom: 20px;
     .four-columns {
       padding: 45px 0;
-      border-top: 1px solid #dddddd;
       border-bottom: 1px solid #dddddd;
-      li {
-        margin-bottom: 10px;
-        a {
-          color: $base-color;
-          font-size: 0.875rem;
-          line-height: 1.125rem;
+      @include mq(xl) {
+        padding: 35px 0 15px 0;
+      }
+      .four-column-item {
+        @include mq(xl) {
+          &:not(:last-of-type) {
+            border-bottom: 1px solid #dddddd;
+            margin-bottom: 25px;
+          }
+        }
+      }
+      ul {
+        @include mq(xl) {
+          display: flex;
+          flex-wrap: wrap;
+        }
+        @include mq(md) {
+          display: block;
+        }
+        li {
+          margin-bottom: 10px;
+          @include mq(xl) {
+            width: 33%;
+            &:not(:last-of-type) {
+              padding-right: 10px;
+            }
+            @include mq(md) {
+              width: 100%;
+            }
+          }
+          a {
+            color: $base-color;
+            font-size: 0.875rem;
+            line-height: 1.125rem;
+          }
         }
       }
     }
@@ -338,46 +560,69 @@ footer {
   .footer-copy {
     margin-bottom: 0;
     padding-bottom: 25px;
-    .footer-left {
-      small {
-        display: block;
-        font-size: 0.875rem;
-        line-height: 1.125rem;
-        a {
-          color: $base-color;
-        }
-        ul {
-          display: inline;
-          li {
-            display: inline;
-          }
-        }
+    .footer-bottom {
+      @include mq(xl) {
+        flex-direction: column-reverse;
       }
-    }
-    .footer-right {
-      display: flex;
-      justify-content: space-between;
-      .language {
-        display: flex;
-        p {
+      .footer-left {
+        @include mq(xl) {
+          text-align: center;
+        }
+        small {
+          display: block;
           font-size: 0.875rem;
-          margin-right: 20px;
-          .fas,
-          span {
-            margin-right: 5px;
-          }
+          line-height: 1.125rem;
           a {
             color: $base-color;
-            font-weight: 600;
-            text-decoration: underline;
+            .br {
+              &:after {
+                content: "\A";
+                white-space: pre;
+                @include mq(xl) {
+                  content: "";
+                }
+              }
+            }
+          }
+          ul {
+            display: inline;
+            @include mq(xl) {
+              display: block;
+            }
+            li {
+              display: inline;
+            }
           }
         }
       }
-      .sns-icons {
-        .fab {
-          font-size: 1.125rem;
-          &:not(:last-child) {
+      .footer-right {
+        display: flex;
+        justify-content: space-between;
+        @include mq(xl) {
+          justify-content: center;
+        }
+        .language {
+          display: flex;
+          p {
+            font-size: 0.875rem;
             margin-right: 20px;
+            .fas,
+            span {
+              margin-right: 5px;
+            }
+            a {
+              color: $base-color;
+              font-weight: 600;
+              text-decoration: underline;
+            }
+          }
+        }
+        .sns-icons {
+          .fab {
+            font-size: 1.125rem;
+            &:not(:last-child) {
+              margin-right: 20px;
+            }
           }
         }
       }
