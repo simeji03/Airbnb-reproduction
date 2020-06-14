@@ -170,7 +170,7 @@ h5 {
   &:first-child {
     padding-right: 60px;
     @include mq(xl) {
-      padding-right: 0;
+      padding-right: 15px;
     }
   }
   .fa-check {
@@ -193,6 +193,8 @@ h5 {
   height: 80px;
   background-color: #fff;
   box-shadow: 0 1px #dddddd;
+  position: fixed;
+  z-index: 1;
   @include mq(xl) {
     background-color: transparent;
     box-shadow: none;
@@ -209,19 +211,18 @@ h5 {
       }
     }
   }
-  .navbar-toggler {
-    @include mq(xl) {
-      // color: #ffffff;
-    }
-  }
   .navbar-collapse {
-    background-color: #fff;
-    @include mq(xl) {
-      padding: 50px;
-    }
     .navbar-nav {
+      @include mq(xl) {
+        display: none;
+      }
       .nav-item {
-        margin-right: 20px;
+        &:not(:last-of-type) {
+          margin-right: 20px;
+          @include mq(xl) {
+            margin-right: 15px;
+          }
+        }
         .nav-link {
           display: flex;
           align-items: center;
@@ -247,7 +248,39 @@ h5 {
       font-size: 0.875rem;
       margin-right: 4rem;
       padding: 5px 15px;
+      @include mq(xl) {
+        display: none;
+      }
     }
+  }
+}
+
+.navbar.clone-nav {
+  position: fixed;
+  top: -100px;
+  left: 0;
+  transition: all 1s;
+  background-color: #fff;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+  height: 60px;
+  .navbar-brand {
+    display: none;
+  }
+  .navbar-collapse {
+    .navbar-nav {
+      @include mq(xl) {
+        display: flex;
+      }
+      .nav-link {
+        height: 60px;
+      }
+    }
+  }
+}
+.navbar.clone-nav.is-fixed-nav {
+  @include mq(xl) {
+    top: 0;
   }
 }
 
@@ -411,6 +444,14 @@ h5 {
 // details
 .details {
   margin-bottom: 100px;
+  @include mq(md) {
+    margin-bottom: 60px;
+  }
+  .three-column-item {
+    @include mq(md) {
+      margin-bottom: 15px;
+    }
+  }
 }
 
 .card {
@@ -432,7 +473,8 @@ h5 {
       height: 105px;
     }
     @include mq(md) {
-      flex: 1;
+      width: 75px;
+      height: 75px;
     }
   }
   .card-body {
@@ -441,7 +483,9 @@ h5 {
       padding: 10px 15px;
     }
     @include mq(md) {
-      flex: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
     .card-title {
       font-size: 1rem;
@@ -483,13 +527,15 @@ h5 {
 
 // closing
 .closing {
-  // display: flex;
-  // align-items: center;
   width: 100%;
   height: 440px;
   background-image: url(../img/closing-img.jpg);
   background-size: cover;
   margin-bottom: 65px;
+  @include mq(md) {
+    height: 375px;
+    margin-bottom: 45px;
+  }
   .closing-box {
     display: flex;
     flex-direction: column;
@@ -568,6 +614,9 @@ footer {
         @include mq(xl) {
           text-align: center;
         }
+        @include mq(md) {
+          text-align-last: left;
+        }
         small {
           display: block;
           font-size: 0.875rem;
@@ -601,6 +650,9 @@ footer {
         @include mq(xl) {
           justify-content: center;
         }
+        @include mq(md) {
+          justify-content: flex-start;
+        }
         .language {
           display: flex;
           p {
@@ -623,6 +675,9 @@ footer {
             &:not(:last-child) {
               margin-right: 20px;
             }
+          }
+          @include mq(md) {
+            display: none;
           }
         }
       }

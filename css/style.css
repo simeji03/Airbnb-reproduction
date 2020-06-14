@@ -186,7 +186,7 @@ h5 {
 
 @media screen and (max-width: 1199px) {
   .two-column-item:first-child {
-    padding-right: 0;
+    padding-right: 15px;
   }
 }
 
@@ -207,6 +207,8 @@ h5 {
   background-color: #fff;
   -webkit-box-shadow: 0 1px #dddddd;
           box-shadow: 0 1px #dddddd;
+  position: fixed;
+  z-index: 1;
 }
 
 @media screen and (max-width: 1199px) {
@@ -240,18 +242,20 @@ h5 {
   }
 }
 
-.navbar .navbar-collapse {
-  background-color: #fff;
-}
-
 @media screen and (max-width: 1199px) {
-  .navbar .navbar-collapse {
-    padding: 50px;
+  .navbar .navbar-collapse .navbar-nav {
+    display: none;
   }
 }
 
-.navbar .navbar-collapse .navbar-nav .nav-item {
+.navbar .navbar-collapse .navbar-nav .nav-item:not(:last-of-type) {
   margin-right: 20px;
+}
+
+@media screen and (max-width: 1199px) {
+  .navbar .navbar-collapse .navbar-nav .nav-item:not(:last-of-type) {
+    margin-right: 15px;
+  }
 }
 
 .navbar .navbar-collapse .navbar-nav .nav-item .nav-link {
@@ -287,6 +291,48 @@ h5 {
   font-size: 0.875rem;
   margin-right: 4rem;
   padding: 5px 15px;
+}
+
+@media screen and (max-width: 1199px) {
+  .navbar .navbar-collapse .btn {
+    display: none;
+  }
+}
+
+.navbar.clone-nav {
+  position: fixed;
+  top: -100px;
+  left: 0;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+  background-color: #fff;
+  -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+  height: 60px;
+}
+
+.navbar.clone-nav .navbar-brand {
+  display: none;
+}
+
+@media screen and (max-width: 1199px) {
+  .navbar.clone-nav .navbar-collapse .navbar-nav {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+.navbar.clone-nav .navbar-collapse .navbar-nav .nav-link {
+  height: 60px;
+}
+
+@media screen and (max-width: 1199px) {
+  .navbar.clone-nav.is-fixed-nav {
+    top: 0;
+  }
 }
 
 .top-img {
@@ -474,6 +520,18 @@ h5 {
   margin-bottom: 100px;
 }
 
+@media screen and (max-width: 767px) {
+  .details {
+    margin-bottom: 60px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .details .three-column-item {
+    margin-bottom: 15px;
+  }
+}
+
 .card {
   position: relative;
   border: none;
@@ -512,10 +570,8 @@ h5 {
 
 @media screen and (max-width: 767px) {
   .card .card-img-top {
-    -webkit-box-flex: 1;
-    -webkit-flex: 1;
-        -ms-flex: 1;
-            flex: 1;
+    width: 75px;
+    height: 75px;
   }
 }
 
@@ -531,10 +587,19 @@ h5 {
 
 @media screen and (max-width: 767px) {
   .card .card-body {
-    -webkit-box-flex: 2;
-    -webkit-flex: 2;
-        -ms-flex: 2;
-            flex: 2;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
   }
 }
 
@@ -589,6 +654,13 @@ h5 {
   background-image: url(../img/closing-img.jpg);
   background-size: cover;
   margin-bottom: 65px;
+}
+
+@media screen and (max-width: 767px) {
+  .closing {
+    height: 375px;
+    margin-bottom: 45px;
+  }
 }
 
 .closing .closing-box {
@@ -718,6 +790,12 @@ footer .footer-copy {
   }
 }
 
+@media screen and (max-width: 767px) {
+  footer .footer-copy .footer-bottom .footer-left {
+    text-align-last: left;
+  }
+}
+
 footer .footer-copy .footer-bottom .footer-left small {
   display: block;
   font-size: 0.875rem;
@@ -773,6 +851,15 @@ footer .footer-copy .footer-bottom .footer-right {
   }
 }
 
+@media screen and (max-width: 767px) {
+  footer .footer-copy .footer-bottom .footer-right {
+    -webkit-box-pack: start;
+    -webkit-justify-content: flex-start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+  }
+}
+
 footer .footer-copy .footer-bottom .footer-right .language {
   display: -webkit-box;
   display: -webkit-flex;
@@ -802,5 +889,11 @@ footer .footer-copy .footer-bottom .footer-right .sns-icons .fab {
 
 footer .footer-copy .footer-bottom .footer-right .sns-icons .fab:not(:last-child) {
   margin-right: 20px;
+}
+
+@media screen and (max-width: 767px) {
+  footer .footer-copy .footer-bottom .footer-right .sns-icons {
+    display: none;
+  }
 }
 /*# sourceMappingURL=style.css.map */
